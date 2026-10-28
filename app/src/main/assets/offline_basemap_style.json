@@ -1,0 +1,61 @@
+{
+  "version": 8,
+  "name": "GABRIEL Google Maps Street View",
+  "sources": {
+    "google_street": {
+      "type": "raster",
+      "tiles": [
+        "https://mt0.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
+        "https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
+        "https://mt2.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
+        "https://mt3.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
+      ],
+      "tileSize": 256,
+      "attribution": "© Google"
+    },
+    "world_land": {
+      "type": "geojson",
+      "data": "asset://world_land.geojson"
+    },
+    "world_borders": {
+      "type": "geojson",
+      "data": "asset://world_borders.geojson"
+    }
+  },
+  "layers": [
+    {
+      "id": "ocean",
+      "type": "background",
+      "paint": {
+        "background-color": "#A5BFDD"
+      }
+    },
+    {
+      "id": "land",
+      "type": "fill",
+      "source": "world_land",
+      "paint": {
+        "fill-color": "#E8ECE9",
+        "fill-outline-color": "#C4D4C4"
+      }
+    },
+    {
+      "id": "borders",
+      "type": "line",
+      "source": "world_borders",
+      "paint": {
+        "line-color": "#8D9B8D",
+        "line-width": 1.2
+      }
+    },
+    {
+      "id": "google-street-tiles",
+      "type": "raster",
+      "source": "google_street",
+      "minzoom": 0,
+      "maxzoom": 21
+    }
+  ]
+}
+
+
